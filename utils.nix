@@ -12,11 +12,13 @@
 , libnotify
 , light
 , superd
+, file
 , isX ? false
+, sway, dwm
 , bemenu, dmenu
 , foot, st
 , wvkbd, svkbd
-, wayout, conky
+, proycon-wayout, conky
 , wtype, xdotool
 , mako, dunst
 , wob
@@ -54,16 +56,22 @@ stdenv.mkDerivation rec {
       libnotify
       light
       superd
+      file
     ] ++ lib.optionals (!isX) [
+      (sway.override {
+        withBaseWrapper = true;
+        withGtkWrapper = true;
+      })
       bemenu
       foot
       wvkbd
-      wayout
+      proycon-wayout
       wtype
       mako
       wob
       swayidle
     ] ++ lib.optionals isX [
+      dwm
       dmenu
       st
       svkbd
@@ -87,6 +95,7 @@ stdenv.mkDerivation rec {
     substituteInPlace configs/superd/services/* --replace "/usr/bin/" ""
     substituteInPlace configs/appcfg/sway_template --replace "/usr" "$out"
     substituteInPlace configs/udev/90-sxmo.rules --replace "/bin" "${busybox}/bin"
+    substituteInPlace configs/default_hooks/sxmo_hook_desktop_widget.sh --replace "wayout" "proycon-wayout"
   '';
 
   buildInputs = [ busybox ];
@@ -98,7 +107,10 @@ stdenv.mkDerivation rec {
   ];
 
   meta = with lib; {
+    description = "Scripts and small C programs that make the sxmo environment";
     homepage = "https://sxmo.org";
     license = licenses.agpl3Only;
+    platforms = platforms.linux;
+    maintainers = with maintainers; [ chuangzhu ];
   };
 }

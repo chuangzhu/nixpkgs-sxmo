@@ -24,8 +24,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    programs.sway.enable = true;
-
     services.logind.extraConfig = ''
       HandlePowerKey=ignore
       HandlePowerKeyLongPress=poweroff
