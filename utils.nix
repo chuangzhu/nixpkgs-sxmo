@@ -13,6 +13,7 @@
 , light
 , superd
 , file
+, mmsd-tng
 , isX ? false
 , sway, dwm
 , bemenu, dmenu
@@ -27,18 +28,19 @@
 
 stdenv.mkDerivation rec {
   pname = "sxmo-utils";
-  version = "1.11.1";
+  version = "1.12.0";
 
   src = fetchFromSourcehut {
     owner = "~mil";
     repo = pname;
     rev = version;
-    hash = "sha256-uV5+erJCe7JmJhKnJF5IQ2kBX6WNxYJRXLo7MBkE0fk=";
+    hash = "sha256-JoOJyoVpSK1iDekaRvltVT6AEi87ZSUDaCidF5tYXlI=";
   };
 
   postPatch = ''
     substituteInPlace Makefile --replace '"$(PREFIX)/bin/{}"' '"$(out)/bin/{}"'
     substituteInPlace Makefile --replace '$(DESTDIR)/usr' '$(out)'
+    substituteInPlace setup_config_version.sh --replace "busybox" ""
 
     # Nixpkgs' busybox does not include rfkill applet
     substituteInPlace scripts/core/sxmo_common.sh --replace 'alias rfkill="busybox rfkill"' '#'
@@ -57,6 +59,7 @@ stdenv.mkDerivation rec {
       light
       superd
       file
+      mmsd-tng
     ] ++ lib.optionals (!isX) [
       (sway.override {
         withBaseWrapper = true;
@@ -97,8 +100,6 @@ stdenv.mkDerivation rec {
     substituteInPlace configs/udev/90-sxmo.rules --replace "/bin" "${busybox}/bin"
     substituteInPlace configs/default_hooks/sxmo_hook_desktop_widget.sh --replace "wayout" "proycon-wayout"
   '';
-
-  buildInputs = [ busybox ];
 
   makeFlags = [
     "DESTDIR=$(out)"
