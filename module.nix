@@ -36,6 +36,9 @@ in
     security.doas.enable = lib.mkDefault true;
     security.doas.extraConfig = builtins.readFile "${pkgs.sxmo-utils}/etc/doas.d/sxmo.conf";
 
+    # Megapixels requires this, and bemenu is much more fluent with this
+    hardware.opengl.enable = lib.mkDefault true;
+
     systemd.services.sxmo = {
       wantedBy = [ "graphical.target" ];
       serviceConfig = {

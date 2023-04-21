@@ -42,22 +42,19 @@ in
 
 stdenv.mkDerivation rec {
   pname = "sxmo-utils";
-  version = "1.12.0";
+  version = "1.13.0";
 
   src = fetchFromSourcehut {
     owner = "~mil";
     repo = pname;
     rev = version;
-    hash = "sha256-JoOJyoVpSK1iDekaRvltVT6AEi87ZSUDaCidF5tYXlI=";
+    hash = "sha256-HNkajPC/spozxRlaP0iMWvOAfriRjl2wo1wdcbVCrkU=";
   };
 
   postPatch = ''
     substituteInPlace Makefile --replace '"$(PREFIX)/bin/{}"' '"$(out)/bin/{}"'
     substituteInPlace Makefile --replace '$(DESTDIR)/usr' '$(out)'
     substituteInPlace setup_config_version.sh --replace "busybox" ""
-
-    # Nixpkgs' busybox does not include rfkill applet
-    substituteInPlace scripts/core/sxmo_common.sh --replace 'alias rfkill="busybox rfkill"' '#'
 
     # A better way than wrapping hundreds of shell scripts (some of which are even meant to be sourced)
     sed -i '2i export PATH="'"$out"'/bin:${lib.makeBinPath ([
@@ -104,11 +101,13 @@ stdenv.mkDerivation rec {
       scripts/core/sxmo_rtcwake.sh \
       scripts/core/sxmo_migrate.sh \
       --replace "/etc/profile.d/sxmo_init.sh" "$out/etc/profile.d/sxmo_init.sh"
-
     substituteInPlace scripts/core/sxmo_version.sh --replace "/usr/bin/" ""
     substituteInPlace configs/superd/services/* --replace "/usr/bin/" ""
     substituteInPlace configs/appcfg/sway_template --replace "/usr" "$out"
     substituteInPlace configs/udev/90-sxmo.rules --replace "/bin" "${busybox}/bin"
+    substituteInPlace scripts/core/sxmo_uniq_exec.sh --replace '$1' '$(command -v $1)'
+
+    substituteInPlace scripts/core/sxmo_common.sh --replace 'alias rfkill="busybox rfkill"' '#'
     substituteInPlace configs/default_hooks/sxmo_hook_desktop_widget.sh --replace "wayout" "proycon-wayout"
   '';
 
