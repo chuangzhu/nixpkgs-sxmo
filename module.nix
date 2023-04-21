@@ -33,6 +33,8 @@ in
 
     services.udev.packages = [ pkgs.sxmo-utils ];
     users.users.${cfg.user}.extraGroups = [ "input" "video" ];
+    security.doas.enable = lib.mkDefault true;
+    security.doas.extraConfig = builtins.readFile "${pkgs.sxmo-utils}/etc/doas.d/sxmo.conf";
 
     systemd.services.sxmo = {
       wantedBy = [ "graphical.target" ];

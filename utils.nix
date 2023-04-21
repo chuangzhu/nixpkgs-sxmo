@@ -1,11 +1,11 @@
 { lib
 , stdenv
 , fetchFromSourcehut
+, fetchpatch
 , gnugrep
 , gojq
 , busybox
 , util-linux
-, makeWrapper
 , lisgd
 , pn
 , inotify-tools
@@ -15,7 +15,7 @@
 , file
 , mmsd-tng
 , isX ? false
-, sway, dwm
+, sway, sway-unwrapped, dwm
 , bemenu, dmenu
 , foot, st
 , wvkbd, svkbd
@@ -25,6 +25,20 @@
 , wob
 , swayidle, xprintidle
 }:
+
+let
+  sxmo-sway = sway.override {
+    withBaseWrapper = true;
+    withGtkWrapper = true;
+    sway-unwrapped = sway-unwrapped.overrideAttrs (super: {
+      # https://github.com/swaywm/sway/pull/6455
+      patches = (super.patches or [ ]) ++ lib.singleton (fetchpatch {
+        url = "https://github.com/swaywm/sway/commit/4666d1785bfb6635e6e8604de383c91714bceebc.patch";
+        hash = "sha256-e2++kHvEksPJLVxnOtgidLTMVXQQw8WFXiKTNkVGVW4=";
+      });
+    });
+  };
+in
 
 stdenv.mkDerivation rec {
   pname = "sxmo-utils";
@@ -61,10 +75,7 @@ stdenv.mkDerivation rec {
       file
       mmsd-tng
     ] ++ lib.optionals (!isX) [
-      (sway.override {
-        withBaseWrapper = true;
-        withGtkWrapper = true;
-      })
+      sxmo-sway
       bemenu
       foot
       wvkbd
