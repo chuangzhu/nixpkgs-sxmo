@@ -51,6 +51,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-HNkajPC/spozxRlaP0iMWvOAfriRjl2wo1wdcbVCrkU=";
   };
 
+  patches = [ ./nerdfonts-3.0.0.patch ];
+
   postPatch = ''
     substituteInPlace Makefile --replace '"$(PREFIX)/bin/{}"' '"$(out)/bin/{}"'
     substituteInPlace Makefile --replace '$(DESTDIR)/usr' '$(out)'

@@ -1,0 +1,312 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# Copyright 2022 Sxmo Contributors
+# Generated using https://gist.github.com/mischw/78e8e42c2ebb1069560a2fc4573b1425
+
+diff --git a/configs/default_hooks/sxmo_hook_icons.sh b/configs/default_hooks/sxmo_hook_icons.sh
+old mode 100755
+new mode 100644
+index f3be346..e1cbc5e
+--- a/configs/default_hooks/sxmo_hook_icons.sh
++++ b/configs/default_hooks/sxmo_hook_icons.sh
+@@ -14,15 +14,15 @@
+ 
+ icon_a2x="⇄"
+ icon_a2y="⇅"
+-icon_ac1=""
+-icon_ac2=""
+-icon_ac3=""
+-icon_ac4=""
++icon_ac1="󰁛"
++icon_ac2="󰁜"
++icon_ac3="󰁃"
++icon_ac4="󰁂"
+ icon_and=""
+-icon_ard=""
+-icon_arl=""
+-icon_arr=""
+-icon_aru=""
++icon_ard="󰁅"
++icon_arl="󰁍"
++icon_arr="󰁔"
++icon_aru="󰁝"
+ icon_att=""
+ icon_bel=""
+ icon_bok=""
+@@ -32,38 +32,38 @@ icon_cam=""
+ icon_cfg="" #configuration cog
+ icon_chk=""
+ icon_chs="♜" #chess
+-icon_clc="" #calculator
+-icon_clk=""
+-icon_cls="" #close
++icon_clc="󰃬" #calculator
++icon_clk="󰥔"
++icon_cls="󰅖" #close
+ icon_com="" # (Laptop) Computer (💻)
+ icon_cpy=""
+-icon_del="﫧" #delete
++icon_del="󰗨" #delete
+ icon_dir="" #directory folder
+ icon_dof="" # dot off
+ icon_don="" # dot on
+-icon_dot="" # searching, connecting, etc.
+-icon_drw="" # Drawing tablet
++icon_dot="󰇘" # searching, connecting, etc.
++icon_drw="󰏬" # Drawing tablet
+ icon_ear="" # earpiece
+-icon_edt="" #editor
+-icon_eml="" #email
+-icon_ena="" # enabled
+-icon_exp="" #expand
++icon_edt="󰎞" #editor
++icon_eml="󰇮" #email
++icon_ena="󰄣" # enabled
++icon_exp="󰁌" #expand
+ icon_fbw=""
+ icon_ffw="" #fast forward
+ icon_ffx="" #firefox
+ icon_fil="" #file
+ icon_flk="" #falkon
+-icon_fll="" #flashlight
++icon_fll="󰉄" #flashlight
+ icon_flt="" #filter/pipe
+ icon_fnd="" #search/find
+-icon_gam="" # gaming controller (🎮)
++icon_gam="󰊴" # gaming controller (🎮)
+ icon_glb="" #globe
+ icon_gps='' #gps
+-icon_grd=""
++icon_grd="󰀻"
+ icon_grp="" #group
+ icon_hdp="" #headphones
+ icon_hom=""
+-icon_img=""
++icon_img="󰏜"
+ icon_inf="" #info
+ icon_itm="" #item (default)
+ icon_kbd="" #keyboard
+@@ -71,26 +71,26 @@ icon_key=""
+ icon_lck=""
+ icon_lnk=""
+ icon_lst="" #list
+-icon_map=""
+-icon_mdd="" # modem disabled state
+-icon_mic=""
+-icon_mmc=""
++icon_map="󰍍"
++icon_mdd="󰄢" # modem disabled state
++icon_mic="󰍬"
++icon_mmc="󰍭"
+ icon_mnu=""
+ icon_mod="" # modem
+-icon_mov=""
+-icon_mse="" # computer mouse (🖱️)
+-icon_msg="" #text
+-icon_mus=""
++icon_mov="󰁁"
++icon_mse="󰍽" # computer mouse (🖱️)
++icon_msg="󰍦" #text
++icon_mus="󰎈"
+ icon_mut="" #mute
+-icon_mvi="" #movie
+-icon_net=""
++icon_mvi="󰎁" #movie
++icon_net="󰀂"
+ icon_nto="" #no touch
+ icon_nxt="" #next
+-icon_out="" #logout
++icon_out="󰍃" #logout
+ icon_pau=""
+-icon_phl="" #phonelog
+-icon_phn="" #phone
+-icon_phx="" #hangup
++icon_phl="󰏹" #phonelog
++icon_phn="󰏲" #phone
++icon_phx="󰏵" #hangup
+ icon_plk="" # phone locked
+ icon_pls=""
+ icon_prn="🖶" # printer (🖨️)
+@@ -98,14 +98,14 @@ icon_prv="" #previous
+ icon_pst=""
+ icon_pwr="⏻" #power
+ icon_red="" #reddit
+-icon_ret="" #return
++icon_ret="󰌑" #return
+ icon_rld=""
+ icon_rol="" #rotate left
+ icon_ror="" #rotate right
+ icon_rss=""
+-icon_sav="" #save
++icon_sav="󰆓" #save
+ icon_sfl="" #shuffle, random
+-icon_shr="" #shrink
++icon_shr="󰁄" #shrink
+ icon_snd="" #send
+ icon_spk="" #speaker
+ icon_spl=""
+@@ -114,19 +114,19 @@ icon_stp="" #stop
+ icon_str="" #star
+ icon_tab=""
+ icon_tgm='' #telegram
+-icon_tmr="" #timer
++icon_tmr="󰀠" #timer
+ icon_tof=""
+ icon_ton=""
+ icon_trh="" # trash
+ icon_trm='' #terminal
+-icon_upc="" #up in circle
++icon_upc="󰁠" #up in circle
+ icon_usb="" # usb
+-icon_usr=""
++icon_usr="󰀄"
+ icon_vid="" #video
+ icon_vim=''
+ icon_wif=""
+-icon_wfo="睊" # wifi off
+-icon_wfh="" # wifi hotspot
++icon_wfo="󰖪" # wifi off
++icon_wfh="󰀂" # wifi hotspot
+ icon_win="" #window
+ icon_wat="" # watch (⌚)
+ icon_wn2=""
+diff --git a/configs/default_hooks/sxmo_hook_statusbar.sh b/configs/default_hooks/sxmo_hook_statusbar.sh
+old mode 100755
+new mode 100644
+index 79e99d9..6f3d6f4
+--- a/configs/default_hooks/sxmo_hook_statusbar.sh
++++ b/configs/default_hooks/sxmo_hook_statusbar.sh
+@@ -108,16 +108,16 @@ _modem() {
+ 					printf 5g # no icon yet
+ 					;;
+ 				*lte*)
+-					printf 4g # ﰒ is in the bad range
++					printf 4g # 󰜔 is in the bad range
+ 					;;
+ 				*umts*|*hsdpa*|*hsupa*|*hspa*|*1xrtt*|*evdo0*|*evdoa*|*evdob*)
+-					printf 3g # ﰑ is in the bad range
++					printf 3g # 󰜓 is in the bad range
+ 					;;
+ 				*edge*)
+ 					printf E
+ 					;;
+ 				*pots*|*gsm*|*gprs*)
+-					printf 2g # ﰐ is in the bad range
++					printf 2g # 󰜒 is in the bad range
+ 					;;
+ 				*)
+ 					sxmo_log "WARNING: USEDTECHS: $USEDTECHS"
+@@ -209,41 +209,41 @@ _battery() {
+ 			# Treat 'Full' status as same as 'Charging'
+ 			if [ "$BATSTATUS" = "C" ] || [ "$BATSTATUS" = "F" ]; then
+ 				if [ "$PCT" -lt 20 ]; then
+-					printf ""
++					printf "󰂆"
+ 				elif [ "$PCT" -lt 30 ]; then
+-					printf ""
++					printf "󰂇"
+ 				elif [ "$PCT" -lt 40 ]; then
+-					printf ""
++					printf "󰂈"
+ 				elif [ "$PCT" -lt 60 ]; then
+-					printf ""
++					printf "󰂉"
+ 				elif [ "$PCT" -lt 80 ]; then
+-					printf ""
++					printf "󰂊"
+ 				elif [ "$PCT" -lt 90 ]; then
+-					printf ""
++					printf "󰂋"
+ 				else
+-					printf "%s%s" "$SPAN_GREEN" "$ENDSPAN"
++					printf "%s󰂅%s" "$SPAN_GREEN" "$ENDSPAN"
+ 				fi
+ 			else
+ 				if [ "$PCT" -lt 10 ]; then
+-					printf "%s%s" "$SPAN_RED" "$ENDSPAN"
++					printf "%s󰁺%s" "$SPAN_RED" "$ENDSPAN"
+ 				elif [ "$PCT" -lt 20 ]; then
+-					printf "%s%s" "$SPAN_ORANGE" "$ENDSPAN"
++					printf "%s󰁻%s" "$SPAN_ORANGE" "$ENDSPAN"
+ 				elif [ "$PCT" -lt 30 ]; then
+-					printf ""
++					printf "󰁼"
+ 				elif [ "$PCT" -lt 40 ]; then
+-					printf ""
++					printf "󰁽"
+ 				elif [ "$PCT" -lt 50 ]; then
+-					printf ""
++					printf "󰁾"
+ 				elif [ "$PCT" -lt 60 ]; then
+-					printf ""
++					printf "󰁿"
+ 				elif [ "$PCT" -lt 70 ]; then
+-					printf ""
++					printf "󰂀"
+ 				elif [ "$PCT" -lt 80 ]; then
+-					printf ""
++					printf "󰂁"
+ 				elif [ "$PCT" -lt 90 ]; then
+-					printf ""
++					printf "󰂂"
+ 				else
+-					printf ""
++					printf "󰁹"
+ 				fi
+ 			fi
+ 
+diff --git a/scripts/core/sxmo_brightness.sh b/scripts/core/sxmo_brightness.sh
+old mode 100755
+new mode 100644
+index 4c25fb5..b3789be
+--- a/scripts/core/sxmo_brightness.sh
++++ b/scripts/core/sxmo_brightness.sh
+@@ -10,7 +10,7 @@ notify() {
+ 	if [ "$SXMO_WM" = "sway" ] && [ -z "$SXMO_WOB_DISABLE" ]; then
+ 		light | grep -o "^[0-9]*" > "$XDG_RUNTIME_DIR"/sxmo.wobsock
+ 	else
+-		light | xargs dunstify -r 888 " Brightness"
++		light | xargs dunstify -r 888 "󰃝 Brightness"
+ 	fi
+ }
+ 
+diff --git a/scripts/modem/sxmo_modemtext.sh b/scripts/modem/sxmo_modemtext.sh
+old mode 100755
+new mode 100644
+index e4ca430..f00cdba
+--- a/scripts/modem/sxmo_modemtext.sh
++++ b/scripts/modem/sxmo_modemtext.sh
+@@ -70,14 +70,14 @@ sendtextmenu() {
+ 			# shellcheck disable=SC2016
+ 			ATTACHMENTS="$(
+ 				tr '\n' '\0' < "$SXMO_LOGDIR/$NUMBER/draft.attachments.txt" |
+-				xargs -0 -I{} sh -c 'printf "%s %s %s :: %s\n" "" "" "$(basename "{}")" "{}"'
++				xargs -0 -I{} sh -c 'printf "%s %s %s :: %s\n" "󰅖" "" "$(basename "{}")" "{}"'
+ 			)"
+ 		fi
+ 
+ 		RECIPIENTS=
+ 		if [ "$(printf %s "$NUMBER" | xargs pnc find | wc -l)" -gt 1 ]; then
+ 			# shellcheck disable=SC2016
+-			RECIPIENTS="$(printf %s "$NUMBER" | xargs pnc find | xargs -I{} sh -c 'printf "  "$(sxmo_contacts.sh --name {})" :: {}\n"')"
++			RECIPIENTS="$(printf %s "$NUMBER" | xargs pnc find | xargs -I{} sh -c 'printf "󰅖 󰀄 "$(sxmo_contacts.sh --name {})" :: {}\n"')"
+ 		fi
+ 
+ 		CHOICES="$(printf "%s Send to %s (%s)\n%b\n%s Add Recipient\n%b\n%s Add Attachment\n%s Edit '%s'\n%s Cancel\n" \
+@@ -98,7 +98,7 @@ sendtextmenu() {
+ 				fi
+ 				;;
+ 			# Remove Attachment
+-			" "*)
++			"󰅖 "*)
+ 				FILE="$(printf %s "$CONFIRM" | awk -F' :: ' '{print $2}')"  
+ 				sed -i "\|$FILE|d" "$SXMO_LOGDIR/$NUMBER/draft.attachments.txt"
+ 				if [ ! -s "$SXMO_LOGDIR/$NUMBER/draft.attachments.txt" ] ; then
+@@ -106,7 +106,7 @@ sendtextmenu() {
+ 				fi
+ 				;;
+ 			# Remove Recipient
+-			" "*)
++			"󰅖 󰀄"*)
+ 				if [ "$(printf %s "$NUMBER" | xargs pnc find | wc -l)" -gt 1 ]; then
+ 					OLDNUMBER="$NUMBER"
+ 					RECIPIENT="$(printf %s "$CONFIRM" | awk -F' :: ' '{print $2}')"
